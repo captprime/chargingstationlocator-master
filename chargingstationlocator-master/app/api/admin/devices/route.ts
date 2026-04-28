@@ -6,6 +6,16 @@ import UserDevice from '@/models/UserDevice';
 import BatteryVoltage from '@/models/BatteryVoltage';
 import User from '@/models/User';
 
+interface BatteryLatest {
+  percentage: number;
+  voltage: number;
+  current: number;
+  power: number;
+  status: string;
+  currentStatus: string;
+  timestamp: Date;
+}
+
 export async function GET() {
   const session = await getServerSession(authOptions);
   if (!session?.user) {
@@ -21,7 +31,7 @@ export async function GET() {
   const results = await Promise.all(devices.map(async (device) => {
     const latest = await BatteryVoltage.findOne({ deviceId: device._id })
       .sort({ timestamp: -1 })
-      .lean();
+      .lean() as BatteryLatest | null;
 
     const user = await User.findById(device.userId).select('name email').lean() as { name?: string; email?: string } | null;
 

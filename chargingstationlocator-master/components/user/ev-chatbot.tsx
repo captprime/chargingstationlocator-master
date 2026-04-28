@@ -19,7 +19,7 @@ interface EVChatbotProps {
   userLocation?: { latitude: number; longitude: number };
 }
 
-function generateResponse(input: string, stations: ChargingStation[], battery: number, _location?: { latitude: number; longitude: number }): string {
+function generateResponse(input: string, stations: ChargingStation[], battery: number): string {
   const q = input.toLowerCase();
 
   if (q.includes('cheapest') || q.includes('cheap') || q.includes('price') || q.includes('cost')) {
@@ -83,7 +83,7 @@ export function EVChatbot({ stations = [], batteryPercentage = 80, userLocation 
     if (!trimmed) return;
 
     const userMsg: Message = { role: 'user', text: trimmed };
-    const botResponse = generateResponse(trimmed, stations, batteryPercentage, userLocation);
+    const botResponse = generateResponse(trimmed, stations, batteryPercentage);
     const botMsg: Message = { role: 'bot', text: botResponse };
 
     setMessages(prev => [...prev, userMsg, botMsg]);

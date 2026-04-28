@@ -25,16 +25,11 @@ interface BatteryMonitorProps {
 
 export function BatteryMonitor({ vehicleId, className, showChart = true }: BatteryMonitorProps) {
   const [batteryData, setBatteryData] = useState<BatteryData | null>(null);
-  const [_loading, setLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
   const [alertDismissed, setAlertDismissed] = useState(false);
 
   useEffect(() => {
     const fetchBatteryData = async () => {
       try {
-        setLoading(true);
-        setError(null);
-
         const url = vehicleId 
           ? `/api/battery?vehicleId=${encodeURIComponent(vehicleId)}`
           : '/api/battery';
@@ -42,21 +37,12 @@ export function BatteryMonitor({ vehicleId, className, showChart = true }: Batte
         const response = await fetch(url);
         const data = await response.json();
 
-        if (!response.ok) {
-          throw new Error(data.error || 'Failed to fetch battery data');
-        }
-
         if (data.success) {
           setBatteryData(data);
-          // Reset alert dismissal when new data comes in
           setAlertDismissed(false);
-        } else {
-          throw new Error(data.error || 'Failed to fetch battery data');
         }
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
+      } catch {
+        // silently fail — BatteryDisplay handles its own error state
       }
     };
 
