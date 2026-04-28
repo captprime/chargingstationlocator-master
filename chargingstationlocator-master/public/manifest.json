@@ -1,0 +1,30 @@
+{
+  "name": "ChargeSense – Smart EV Dashboard",
+  "short_name": "ChargeSense",
+  "description": "Smart EV Battery Monitoring and Charging Station Recommender",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["utilities", "navigation"],
+  "shortcuts": [
+    {
+      "name": "Battery Dashboard",
+      "url": "/battery-dashboard",
+      "description": "View real-time battery status"
+    },
+    {
+      "name": "Find Stations",
+      "url": "/stations",
+      "description": "Find nearby charging stations"
+    }
+  ]
+}
