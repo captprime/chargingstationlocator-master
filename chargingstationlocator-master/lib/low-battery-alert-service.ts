@@ -73,7 +73,7 @@ async function getNearbyStations(lat: number, lng: number, radiusKm = 20, limit 
   const allStations = await ChargingStation.find({}).lean();
   return allStations
     .map((s) => ({
-      id: (s._id as any).toString(),
+      id: (s._id as { toString(): string }).toString(),
       name: s.name,
       distance: calculateDistance(lat, lng, s.latitude, s.longitude),
       lat: s.latitude,

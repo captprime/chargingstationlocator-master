@@ -104,7 +104,7 @@ export function BatteryAlertSettings() {
             onValueChange={([v]) => { setThreshold(v); setSaved(false); }}
           />
           <p className="text-xs text-muted-foreground">
-            You'll receive an alert when battery falls below {threshold}%.
+            You&apos;ll receive an alert when battery falls below {threshold}%.
           </p>
         </div>
 

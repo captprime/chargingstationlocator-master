@@ -7,8 +7,7 @@ import { BatteryMonitor } from "@/components/battery/battery-monitor";
 import { ActiveSessionsCard } from "@/components/sessions/active-sessions-card";
 import { DashboardTools } from "@/components/dashboard/dashboard-tools";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Battery, MapPin, History, BarChart2, ChevronRight, Crown, Leaf } from "lucide-react";
+import { Battery, MapPin, BarChart2, ChevronRight, Crown } from "lucide-react";
 import connectDB from "@/lib/mongodb";
 import UserDevice from "@/models/UserDevice";
 

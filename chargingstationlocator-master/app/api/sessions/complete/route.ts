@@ -241,7 +241,7 @@ export async function POST(request: NextRequest) {
           await validSession.save({ session: mongoSession });
 
           // Process session completion: calculate energy, revenue, and update stats
-          const { energyConsumed, sessionRevenue, sessionDurationMinutes } = 
+          const { energyConsumed, sessionRevenue } = 
             await processSessionCompletion(sessionId, mongoSession);
 
           console.log(`Session ${sessionId} completed: ${energyConsumed.toFixed(2)} kWh, ₹${sessionRevenue.toFixed(2)} revenue`);

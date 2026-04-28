@@ -113,8 +113,8 @@ export async function GET(request: NextRequest) {
           pricePerKwh: station.pricePerKwh,
           queueLength: station.queueLength,
           amenities: station.amenities || [],
-          fastCharging: (station as any).fastCharging ?? false,
-          rating: (station as any).rating ?? 0,
+          fastCharging: (station as { fastCharging?: boolean }).fastCharging ?? false,
+          rating: (station as { rating?: number }).rating ?? 0,
           operatingHours: station.operatingHours,
           distance
         };

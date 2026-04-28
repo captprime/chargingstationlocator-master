@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
 
     // Transform readings — use ?? not || so 0 and negative values are preserved
     const transformedReadings = readings.map(reading => ({
-      id: (reading._id as any).toString(),
+      id: (reading._id as { toString(): string }).toString(),
       voltage: reading.voltage,
       current: reading.current ?? 0,
       power: reading.power ?? (reading.voltage * Math.abs(reading.current ?? 0)),

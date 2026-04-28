@@ -20,6 +20,7 @@ interface NearbyStation {
 
 interface LowBatteryNotification {
   _id: string;
+  type: string;
   message: string;
   priority: 'medium' | 'high';
   createdAt: string;
@@ -48,7 +49,7 @@ export function LowBatteryNotificationBanner() {
         const data = await res.json();
         if (data.notifications) {
           const lowBattery = data.notifications.filter(
-            (n: any) => n.type === 'low_battery'
+            (n: LowBatteryNotification) => n.type === 'low_battery'
           );
           setNotifications(lowBattery);
         }

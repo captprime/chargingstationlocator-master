@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth-options';
 import connectDB from '@/lib/mongodb';
-import User from '@/models/User';
 import PhoneOtp from '@/models/PhoneOtp';
 
 async function sendOtpSms(phone: string, code: string): Promise<{ ok: boolean; error?: string }> {

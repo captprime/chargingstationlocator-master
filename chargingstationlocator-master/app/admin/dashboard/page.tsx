@@ -21,7 +21,7 @@ export default function AdminDashboardPage() {
     const { data: session } = useSession();
     const [viewMode, setViewMode] = useState<ViewMode>('dashboard');
     const [selectedStationId, setSelectedStationId] = useState<string | null>(null);
-    const [editingStation, setEditingStation] = useState<StationDetailsData | null>(null);
+    const [_editingStation, setEditingStation] = useState<StationDetailsData | null>(null);
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [stationsReloadKey, setStationsReloadKey] = useState(0);
     

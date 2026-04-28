@@ -23,7 +23,7 @@ export async function GET() {
       .sort({ timestamp: -1 })
       .lean();
 
-    const user = await User.findById(device.userId).select('name email').lean();
+    const user = await User.findById(device.userId).select('name email').lean() as { name?: string; email?: string } | null;
 
     return {
       deviceId: device._id.toString(),
@@ -31,8 +31,8 @@ export async function GET() {
       deviceName: device.deviceName,
       isActive: device.isActive,
       userId: device.userId.toString(),
-      userName: (user as any)?.name ?? 'Unknown',
-      userEmail: (user as any)?.email ?? '',
+      userName: user?.name ?? 'Unknown',
+      userEmail: user?.email ?? '',
       latest: latest ? {
         percentage: latest.percentage,
         voltage: latest.voltage,
