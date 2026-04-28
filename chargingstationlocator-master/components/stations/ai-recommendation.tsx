@@ -4,10 +4,7 @@ import { useMemo } from 'react';
 import { ChargingStation } from '@/types/station';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Sparkles, MapPin, DollarSign, Users, ArrowRight, Zap } from 'lucide-react';
-import { cn } from '@/lib/utils';
-
 interface AIRecommendationProps {
   stations: ChargingStation[];
   batteryPercentage?: number;

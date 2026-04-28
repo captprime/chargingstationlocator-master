@@ -21,7 +21,6 @@ export default function AdminDashboardPage() {
     const { data: session } = useSession();
     const [viewMode, setViewMode] = useState<ViewMode>('dashboard');
     const [selectedStationId, setSelectedStationId] = useState<string | null>(null);
-    const [_editingStation, setEditingStation] = useState<StationDetailsData | null>(null);
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [stationsReloadKey, setStationsReloadKey] = useState(0);
     
@@ -37,12 +36,11 @@ export default function AdminDashboardPage() {
     const handleBackToDashboard = () => {
         setViewMode('dashboard');
         setSelectedStationId(null);
-        setEditingStation(null);
     };
 
     const handleEditStation = (station: StationDetailsData) => {
-        setEditingStation(station);
-        // You could open an edit modal here or navigate to edit page
+        // TODO: open edit modal or navigate to edit page
+        console.log('Edit station:', station.id);
     };
 
     if (viewMode === 'station-details' && selectedStationId) {

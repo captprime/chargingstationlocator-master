@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Battery, TrendingUp, Download, RefreshCw, Smartphone, Zap } from "lucide-react";
+import { ArrowLeft, Battery, Download, RefreshCw, Smartphone, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface UserDevice {

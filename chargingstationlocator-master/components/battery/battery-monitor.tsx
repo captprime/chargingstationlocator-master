@@ -25,8 +25,8 @@ interface BatteryMonitorProps {
 
 export function BatteryMonitor({ vehicleId, className, showChart = true }: BatteryMonitorProps) {
   const [batteryData, setBatteryData] = useState<BatteryData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [_loading, setLoading] = useState(true);
+  const [_error, setError] = useState<string | null>(null);
   const [alertDismissed, setAlertDismissed] = useState(false);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -57,11 +57,7 @@ export function StationDetails({ stationId, onBack, onEdit }: StationDetailsProp
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchStationDetails();
-  }, [stationId]);
-
-  const fetchStationDetails = async () => {
+  const fetchStationDetails = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -81,7 +77,11 @@ export function StationDetails({ stationId, onBack, onEdit }: StationDetailsProp
     } finally {
       setLoading(false);
     }
-  };
+  }, [stationId]);
+
+  useEffect(() => {
+    fetchStationDetails();
+  }, [stationId, fetchStationDetails]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {

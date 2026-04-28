@@ -8,7 +8,7 @@ import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
-  Battery, Zap, TrendingDown, TrendingUp, Minus,
+  Battery, Zap, TrendingDown, TrendingUp,
   RefreshCw, Activity, Users, Square, Play
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -141,7 +141,6 @@ function DeviceCard({ device, onRefresh }: { device: DeviceInfo; onRefresh: () =
       clearInterval(uiInterval);
       clearInterval(dbInterval);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sim.running, postReading]);
 
   const start = (mode: 'charging' | 'discharging') => {

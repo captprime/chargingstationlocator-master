@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -23,13 +23,7 @@ export function AdminVerification() {
   const [loading, setLoading] = useState(true);
   const [verifying, setVerifying] = useState(false);
 
-  useEffect(() => {
-    if (session) {
-      fetchAdminStats();
-    }
-  }, [session]);
-
-  const fetchAdminStats = async () => {
+  const fetchAdminStats = useCallback(async () => {
     try {
       setLoading(true);
       
@@ -53,7 +47,13 @@ export function AdminVerification() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [session]);
+
+  useEffect(() => {
+    if (session) {
+      fetchAdminStats();
+    }
+  }, [session, fetchAdminStats]);
 
   const verifyAdminSeparation = async () => {
     try {

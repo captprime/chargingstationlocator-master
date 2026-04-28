@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -32,7 +32,7 @@ export function OccupancyMonitor() {
   const [stations, setStations] = useState<StationOccupancy[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchStations = async () => {
+  const fetchStations = useCallback(async () => {
     if (!session) return;
     setLoading(true);
     try {
@@ -50,9 +50,9 @@ export function OccupancyMonitor() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [session]);
 
-  useEffect(() => { fetchStations(); }, [session]);
+  useEffect(() => { fetchStations(); }, [session, fetchStations]);
 
   return (
     <Card>

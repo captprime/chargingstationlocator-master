@@ -19,7 +19,7 @@ interface EVChatbotProps {
   userLocation?: { latitude: number; longitude: number };
 }
 
-function generateResponse(input: string, stations: ChargingStation[], battery: number, location?: { latitude: number; longitude: number }): string {
+function generateResponse(input: string, stations: ChargingStation[], battery: number, _location?: { latitude: number; longitude: number }): string {
   const q = input.toLowerCase();
 
   if (q.includes('cheapest') || q.includes('cheap') || q.includes('price') || q.includes('cost')) {

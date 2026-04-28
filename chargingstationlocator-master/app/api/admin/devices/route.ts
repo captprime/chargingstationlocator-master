@@ -26,7 +26,7 @@ export async function GET() {
     const user = await User.findById(device.userId).select('name email').lean() as { name?: string; email?: string } | null;
 
     return {
-      deviceId: device._id.toString(),
+      deviceId: (device._id as { toString(): string }).toString(),
       vehicleId: device.vehicleId,
       deviceName: device.deviceName,
       isActive: device.isActive,
